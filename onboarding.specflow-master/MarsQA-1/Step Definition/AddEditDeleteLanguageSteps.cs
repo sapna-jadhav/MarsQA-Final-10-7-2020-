@@ -40,11 +40,8 @@ namespace MarsQA_1.Step_Definition
         {
 			try
 			{
-				IWebElement searchInput = Driver.driver.FindElement(By.XPath("//input[@placeholder='Add Language']"));
-				searchInput.SendKeys("French");
-				string actualvalue = searchInput.GetAttribute("value");
-
-				Assert.AreEqual(actualvalue, "French");
+				string searchInput = Driver.driver.FindElement(By.XPath("//input[@placeholder='Add Language']")).Text;
+				Assert.AreEqual(searchInput, "French");
 			}
 			catch
 			{
@@ -59,11 +56,10 @@ namespace MarsQA_1.Step_Definition
         {
 			try
 			{
-				IWebElement searchInput = Driver.driver.FindElement(By.XPath("//input[@placeholder='Add Language']"));
-				searchInput.SendKeys("Hindi");
-				string actualvalue = searchInput.GetAttribute("value");
+				string searchInput2 = Driver.driver.FindElement(By.XPath("//input[@placeholder='Add Language']")).Text;
+				
 
-				Assert.AreEqual(actualvalue, "Hindi");
+				Assert.AreEqual(searchInput2, "Hindi");
 			}
 			catch
 			{
