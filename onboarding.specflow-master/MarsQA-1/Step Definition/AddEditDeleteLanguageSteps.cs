@@ -38,35 +38,27 @@ namespace MarsQA_1.Step_Definition
         [Then(@"A new language gets added successfully")]
         public void ThenANewLanguageGetsAddedSuccessfully()
         {
-			try
-			{
-				string searchInput = Driver.driver.FindElement(By.XPath("//input[@placeholder='Add Language']")).Text;
+				string searchInput = Driver.driver.FindElement(By.XPath("//tbody//tr[1]//td[1]")).Text;
 				Assert.AreEqual(searchInput, "French");
-			}
-			catch
-			{
-				Assert.True(true, "Language added Successfully");
-			}
-		
-		CommonMethods.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Language added Successfully");
+			string searchLevel = Driver.driver.FindElement(By.XPath("//tbody//tr[1]//td[2]")).Text;
+			Assert.AreEqual(searchLevel, "Conversational");
+
+
+
+			CommonMethods.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Language added Successfully");
 		}
         
         [Then(@"A Seller Language gets Updated Successfully")]
         public void ThenASellerLanguageGetsUpdatedSuccessfully()
         {
-			try
-			{
-				string searchInput2 = Driver.driver.FindElement(By.XPath("//input[@placeholder='Add Language']")).Text;
-				
-
+			
+				string searchInput2 = Driver.driver.FindElement(By.XPath("///tbody//tr[1]//td[1]")).Text;
 				Assert.AreEqual(searchInput2, "Hindi");
-			}
-			catch
-			{
-				Assert.True(true, "Language Updated Successfully");
-			}
-		
-		CommonMethods.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Language edited Successfully");
+			string searchLevel = Driver.driver.FindElement(By.XPath("//tbody//tr[1]//td[2]")).Text;
+			Assert.AreEqual(searchLevel, "Fluent");
+
+
+			CommonMethods.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Language edited Successfully");
 		}
         
         [Then(@"The Seller language deatils gets deleted successfully")]
