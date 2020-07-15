@@ -31,26 +31,13 @@ namespace MarsQA_1.SpecflowPages.Pages
 			Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 			BtnAddNew.Click();
 			//TxtLanguage.SendKeys(ExcelLibHelper.ReadData(2, "Language"));
-
-			IWebElement searchInput = Driver.driver.FindElement(By.XPath("//input[@placeholder='Add Language']"));
-			searchInput.SendKeys("French");
-			string actualvalue = searchInput.GetAttribute("value");
-
-			Assert.AreEqual(actualvalue, "French");
-
+			TxtLanguage.SendKeys("French");
 			//GenericMethods.CheckLength(4, 30, "Language", "French");
-			//Assert expected and actual value on level type
 			Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-			IWebElement searchInputLevel = Driver.driver.FindElement(By.XPath("//select[@name='level']"));
-			searchInputLevel.SendKeys("Conversational");
-			string actualvalueNew = searchInputLevel.GetAttribute("value");
-			Assert.AreEqual(actualvalueNew, "Conversational");
-			//Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
+			DdlLevel.SendKeys("Conversational");
 			AddBtn.Click();
-			Assert.AreEqual("Profile", Driver.driver.Title);
-			CommonMethods.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Language added successfully");
-
 		}
+
 		public static void EditLanguage()
 		{
 
@@ -58,20 +45,11 @@ namespace MarsQA_1.SpecflowPages.Pages
 			Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 			BtnEdit.Click();
 			TxtLanguage.Clear();
-			IWebElement searchInput = Driver.driver.FindElement(By.XPath("//input[@placeholder='Add Language']"));
-			searchInput.SendKeys("Hindi");
-			string actualvalue = searchInput.GetAttribute("value");
-
-			Assert.AreEqual(actualvalue, "Hindi");
-			
+			TxtLanguage.SendKeys("Hindi");
 			Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-			IWebElement searchInputLevel = Driver.driver.FindElement(By.XPath("//select[@name='level']"));
-			searchInputLevel.SendKeys("Fluent");
-			string actualvalueNew = searchInputLevel.GetAttribute("value");
-			Assert.AreEqual(actualvalueNew, "Fluent");
+			DdlLevel.SendKeys("Fluent");
 			BtnUpdate.Click();
-			Assert.AreEqual("Profile", Driver.driver.Title);
-			CommonMethods.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Language edited successfully");
+			
 		}
 		public static void DeleteLangauge()
 		{
@@ -79,8 +57,7 @@ namespace MarsQA_1.SpecflowPages.Pages
 			Driver.driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
 			IList<IWebElement> rowDeleteButtons = Driver.driver.FindElements(By.XPath("//div[@data-tab='first']//table//tbody//tr//td[3]//i[@class='remove icon']"));
 			rowDeleteButtons[0].Click();
-			Assert.AreEqual("Profile", Driver.driver.Title);
-			CommonMethods.test.Log(RelevantCodes.ExtentReports.LogStatus.Pass, "Language deleted successfully");
+			
 		}
 	}
 }
